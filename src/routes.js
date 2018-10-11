@@ -9,7 +9,7 @@ import Maps from './components/pages/Maps.vue'
 
 
 export const routes = [
-    { path: '', component: Home },
+    { path: '', component: Home }, //path visible to users
     { path: '/ipchecker', component: IPChecker },
     { path: '/about', component: About },
     { path: '/Space', component: Space},
