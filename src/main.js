@@ -16,8 +16,7 @@ const router = new VueRouter({
   mode: 'history'
 })
 
-// add components?
-// still needs cleaning up
+// add components + still needs cleaning up
 new Vue({
   el: '#app',
   router,
