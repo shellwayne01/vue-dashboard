@@ -4,7 +4,7 @@
      <div class="container">
         <iframe id="googleMap" src="//www.google.com/maps/embed/v1/place?q=Harrods,Brompton%20Rd,%20UK
         &zoom=17
-        &key=AIzaSyCgEs0ltTZ0cDN3JsyKvb9_maoC8HfRnD4">
+        &key="+{{nasaKey}}>
         </iframe>
 
         <div class="row">
@@ -16,6 +16,11 @@
 <script>
     import NavBar from '../items/NavBar.vue';
     export default {
+      data: function(){
+        return {
+          nasakey: config.NASA_key
+        }
+      },
         components: {
             appNavbar: NavBar,
         }
