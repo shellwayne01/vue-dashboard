@@ -1,8 +1,6 @@
-
-
-export var barChartData = {  
+export var barChartData = {
     type: 'bar',
-      data: {
+    data: {
         labels: ['Blocked IP-Address','Unblocked IP-Address'],
         datasets: [
           { // one line graph
@@ -18,10 +16,10 @@ export var barChartData = {
             ],
             borderWidth: 2,
             fill: false,
-          },
+          }
         ]
-      },
-      options: {
+    },
+    options: {
         responsive: true,
         maintainAspectRatio: true,
         lineTension: 0,
@@ -33,8 +31,7 @@ export var barChartData = {
             }
           }]
         }
-      }
     }
-  
-  
-    export default barChartData;
+}
+
+export default barChartData;

@@ -6,16 +6,17 @@
       <br>
         <div class="block" :class="{true: this.success, false: !this.success}"></div>
       <br>
-      <div class="row">
+
+      <div class="row" id="ipRow">
         <button id="mainBtn" type="button" class="btn btn-primary" @click="checkSuccess">Click</button>
-        <input type="text" placeholder="IP-Address" v-on:keydown.enter="changeUrl">
-        
-        <p>{{ url }}</p>
-        <p>In order for this to work you need to download
-          the addon for your browser called CORS.
-        </p>
-        <p> make sure when you type an IP in the bar that you press enter before you press click.</p>
+        <input type="text" class="inputA" placeholder="IP-Address" v-on:keydown.enter="changeUrl">
       </div>
+
+      <p>{{ url }}</p>
+      <p>In order for this to work you need to download
+        the addon for your browser called CORS.
+      </p>
+      <p> make sure when you type an IP in the bar that you press enter before you press click.</p>
         <h3>{{ blockCounter }}/{{ unblockCounter }} blocked/unblocked {{ update }}</h3>
     </div>
 </div>
@@ -66,10 +67,13 @@
 </script>
 
 <style>
+    h1,
+    h3 {
+      /*text-align:center;*/
+    }
 
     .container {
-      margin-left: 160px;
-      padding: 5% 5%;
+      margin-left: 20%;
       font-family: Times, sans-serif;
     }
 
@@ -78,6 +82,13 @@
         width: 100px;
         height: 100px;
         border: 3px solid black;
+        display: block;
+        /*margin: auto;*/
+    }
+
+    .inputA{
+      /*border: 2px solid #ccc;*/
+
     }
 
     .true {
@@ -89,8 +100,8 @@
     }
 
     #mainBtn {
-      margin-top: 15px;
-      margin-left: 15px;
+      /*margin-top: 15px;
+      margin-left: 15px;*/
     }
         .fade-enter {
         opacity: 0;
@@ -104,5 +115,11 @@
     .fade-leave-active {
         transition: opacity 2s;
         opacity: 0;
+    }
+
+    #ipRow {
+      margin-left: 2px;
+      margin-bottom: 2%;
+      /*text-align:center;*/
     }
 </style>

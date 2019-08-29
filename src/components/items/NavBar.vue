@@ -11,7 +11,7 @@
 <style>
 .side-nav {
     height: 100%;
-    width: 160px;
+    width: 20%;
     position: fixed;
     z-index: 1;
     top: 0;

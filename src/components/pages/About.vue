@@ -1,10 +1,11 @@
 <template>
   <!-- Include a gallery of photos or a blog? -->
+  <!-- Real Time Edits Allowed -->
   <div>
     <app-navbar></app-navbar>
     <div class="about-content">
-      <h1 style= "text-align: center; padding-top:40px">{{ title }}</h1>
-      <div style="text-align: center; padding:5%">
+      <h1>{{ title }}</h1>
+      <div id="Intro">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit
           gravida magna vitae fringilla. Donec consequat eros vel neque dapibus,
           sed tempus mauris auctor. Praesent tristique sagittis laoreet. Vivamus
@@ -18,7 +19,7 @@
 
       <div class="meet-dev">
         <div class="box-padding">
-          <h2 style="margin: 5% 15% 0% 0%">{{ dev1 }}</h2>
+          <h2>{{ dev1 }}</h2>
             <div class="meet-dev-text">
               <img class="meet-dev-imgLeft" src="../../assets/Mark3.jpg">
               <p class="meet-dev-text">Orci varius natoque penatibus et magnis dis
@@ -31,7 +32,7 @@
 
       <div class="meet-dev" style="text-align:right">
         <div class="box-padding">
-          <h2 style="margin: 5% 0% 0% 15%">{{ dev2 }}</h2>
+          <h2>{{ dev2 }}</h2>
             <div class="meet-dev-text">
               <img class="meet-dev-imgRight" src="../../assets/Yorranshell.jpg">
               <p class="meet-dev-text">Curabitur placerat euismod neque nec commodo. Sed
@@ -66,12 +67,17 @@
 
   .about-content {
     font-family: Times, sans-serif; /* for now */
-    margin-left: 160px;
-    /* background-color: grey; */
+    margin: 5% 0% 5% 22%; /*top, right, bottom, left*/
+    width: 76%;
+    /*background-color: grey;*/
   }
 
-  .h {
-    display: block;
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+
   }
 
   .meet-dev {
@@ -104,6 +110,11 @@
 
   .meet-dev-text {
     display: inline;
+  }
+
+  #Intro {
+    text-align: center;
+    padding: 5%;
   }
 
 </style>

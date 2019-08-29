@@ -2,44 +2,42 @@
 <template>
 <div>
      <app-navbar></app-navbar>
-
-     <div style="margin-left:200px;" class="container">
+     <div class="container">
         <div class="row">
-
-        <div class="col-xs-6">
-            <transition name="fade" appear>
-                <div class="chart-container">
-                    <canvas id="planet-chart"></canvas>
-                </div>
-            </transition>
+          <!--Chart 1-->
+          <div class="col-xs-6" id="planetChart">
+              <transition name="fade" appear>
+                  <div class="chart-container">
+                      <canvas id="planet-chart"></canvas>
+                  </div>
+              </transition>
+          </div>
+          <!--Chart 2-->
+          <div class="col-xs-6" id="barChart">
+              <transition name="fade" appear>
+                  <div class="chart-container">
+                      <canvas id="bar-chart"></canvas>
+                  </div>
+              </transition>
+          </div>
         </div>
 
-        <div class="col-xs-6">
-            <transition name="fade" appear>
-                <div class="chart-container">
-                    <canvas id="pie-chart"></canvas>
-                </div>
-            </transition>
-        </div>
-
-        <div class="row">
+        <div class="row" id="calRow">
             <div style="margin-top:15px;" class="col-xs-12">
-                 <transition name="fade" appear>
+                  <transition name="fade" appear>
                     <appCalender></appCalender>
-                 </transition>
+                  </transition>
             </div>
         </div>
-        <div class="row">
+
+        <div class="row" id="btnRow">
             <br></br>
-            <button class="btn btn-primary" @click="updateChart">Update</button>
+            <button class="btn btn-primary" @click="updateCharts">Update</button>
             <button class="btn btn-success" @click="unblocked++">Unblocked</button>
             <button class="btn btn-danger" @click="blocked++">Blocked</button>
-            <p>{{ unblocked }}/{{ blocked }}</p>
+            <p>{{ unblocked }}/{{ blocked }} </p>
         </div>
-
-        </div>
-        </div>
-
+    </div>
 </div>
 </template>
 
@@ -51,6 +49,7 @@
     import Calender from "../items/Calender.vue"
     import IPChecker from "../pages/IPChecker.vue"
     export default {
+    //a component’s data option must be a function, so that each instance can maintain an independent copy of the returned data object
         data: function() {
             return {
                 blocked: 0,
@@ -61,30 +60,37 @@
         },
         mounted(){
             this.createChart('planet-chart', this.planetChartData);
-            this.createChart('pie-chart', this.barChartData);
+            this.createChart('bar-chart', this.barChartData);
         },
         methods: {
-            updateChart(){
-                if(this.planetChartData.data.datasets[0].data.length != 0 && barChartData.data.datasets[0].data.length != 0) {
-                    this.planetChartData.data.datasets[0].data.pop()
-                    this.planetChartData.data.datasets[0].data.pop()
-                    this.barChartData.data.datasets[0].data.pop()
-                    this.barChartData.data.datasets[0].data.pop()
-                } else {
-                    this.planetChartData.data.datasets[0].data.push(this.blocked)
-                    this.planetChartData.data.datasets[0].data.push(this.unblocked)
-                    this.barChartData.data.datasets[0].data.push(this.blocked)
-                    this.barChartData.data.datasets[0].data.push(this.unblocked)
-                }  
+            updateCharts(){
+                if(this.planetChartData.data.datasets[0].data.length != 0 || this.barChartData.data.datasets[0].data.length != 0) {
+                    this.planetChartData.data.datasets[0].data = []
+                    this.barChartData.data.datasets[0].data = []
+                    console.log(this.planetChartData.data.datasets[0].data)
+                    console.log("old data cleared")
+                }else {
+                    console.log(this.planetChartData.data.datasets[0].data)
+                    console.log("already prepped")
+                }
+                this.planetChartData.data.datasets[0].data.push(this.blocked)
+                this.planetChartData.data.datasets[0].data.push(this.unblocked)
+                this.barChartData.data.datasets[0].data.push(this.blocked)
+                this.barChartData.data.datasets[0].data.push(this.unblocked)
+                console.log(this.planetChartData.data.datasets[0].data)
+                this.createChart('planet-chart', this.planetChartData);
+                this.createChart('bar-chart', this.barChartData); //why not mounted tho?
             },
             createChart(chartId, chartData) {
-                const ctx = document.getElementById(chartId);
-                const myChart = new Chart(ctx, {
+                var ctx = document.getElementById(chartId);
+                var myChart = new Chart(ctx, {
                     type: chartData.type,
                     data: chartData.data,
                     options: chartData.options,
                 })
             },
+            getChartInfo(chartId){
+            }
         },
         components: {
             appNavbar: NavBar,
@@ -95,10 +101,15 @@
 </script>
 
 <style>
+    .container{
+      /*margin-left:200px;*/
+      margin-left: 20%;
+      width: 80%;
+    }
 
     .chart-container{
-        margin-top:15px;
-        background-color:lightgrey;
+      margin-top: 15px;
+      background-color: lightgrey;
     }
 
     .fade-enter {
@@ -108,10 +119,24 @@
         transition: opacity 1s;
     }
     .fade-leave {
-
     }
     .fade-leave-active {
         transition: opacity 2s;
         opacity: 0;
     }
+
+    #btnRow{
+      text-align: center;
+    }
+
+    #calRow{
+    }
+
+    #barChart{
+    }
+
+    #planetChart{
+    }
+
+
 </style>

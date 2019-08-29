@@ -1,15 +1,13 @@
-
-
-export var planetChartData = {  
+export var planetChartData = {
   type: 'pie',
-    data: {
+  data: {
       labels: ['Blocked IP-Address','Unblocked IP-Address'],
       datasets: [
         { // one line graph
           label: 'Blocked IP-Address',
           data: [],
           backgroundColor: [
-            'rgba(255, 0, 0, 1)', 
+            'rgba(255, 0, 0, 1)',
             'rgba(71, 183,132,.5)'
           ],
           borderColor: [
@@ -20,21 +18,21 @@ export var planetChartData = {
           fill: true,
         },
       ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      lineTension: 1,
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true,
-            padding: 25,
-          }
-        }]
-      }
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    lineTension: 1,
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          padding: 25,
+        }
+      }]
     }
   }
 
+}
 
-  export default planetChartData;
+export default planetChartData;
